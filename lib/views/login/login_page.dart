@@ -15,74 +15,83 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        padding: const EdgeInsets.all(24.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Text(
-              'Login',
-              style: TextStyle(
-                fontSize: 36,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            const Text(
-              'If you are already a member you can login with your email address and password.',
-            ),
-            const SizedBox(
-              height: 16,
-            ),
-            SizedBox(
-              height: 55,
-              child: TextFormField(
-                controller: usernameController,
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(12),
+      body: ListView(
+        children: [
+          const SizedBox(
+            height: 100,
+          ),
+          Center(
+            child: Container(
+              padding: const EdgeInsets.all(24.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    'Login',
+                    style: TextStyle(
+                      fontSize: 36,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
-                  hintText: 'Username',
-                ),
-              ),
-            ),
-            const SizedBox(
-              height: 16,
-            ),
-            SizedBox(
-              height: 55,
-              child: TextFormField(
-                controller: passwordController,
-                obscureText: true,
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(12),
+                  const Text(
+                    'If you are already a member you can login with your email address and password.',
+                  ),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  SizedBox(
+                    height: 55,
+                    child: TextFormField(
+                      controller: usernameController,
+                      decoration: const InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(12),
+                          ),
+                        ),
+                        hintText: 'Username',
+                      ),
                     ),
                   ),
-                  hintText: 'Password',
-                ),
+                  const SizedBox(
+                    height: 16,
+                  ),
+                  SizedBox(
+                    height: 55,
+                    child: TextFormField(
+                      controller: passwordController,
+                      obscureText: true,
+                      decoration: const InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(12),
+                          ),
+                        ),
+                        hintText: 'Password',
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  SizedBox(
+                    width: double.infinity,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Get.to(DashboardPage(
+                          username: usernameController.text,
+                          password: usernameController.text,
+                        ));
+                      },
+                      child: const Text('Login'),
+                    ),
+                  )
+                ],
               ),
             ),
-            const SizedBox(
-              height: 20,
-            ),
-            SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                onPressed: () {
-                  Get.to(DashboardPage(
-                    username: usernameController.text,
-                    password: usernameController.text,
-                  ));
-                },
-                child: const Text('Login'),
-              ),
-            )
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
